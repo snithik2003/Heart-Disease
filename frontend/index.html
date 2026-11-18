@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Heart Disease Prediction System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="card">
+    <h1>Heart Disease Prediction System</h1>
+    <p class="sub">Enter the patient's values below. A Logistic Regression model trained on the UCI Cleveland Heart Disease dataset estimates the probability of heart disease.</p>
+
+    <form id="form" novalidate>
+      <div class="grid">
+        <label>Age (years)<input type="number" name="age" min="1" max="120" step="1" required value="54"></label>
+        <label>Sex
+          <select name="sex"><option value="1">Male</option><option value="0">Female</option></select>
+        </label>
+        <label>Chest pain type
+          <select name="cp">
+            <option value="1">1 - Typical angina</option>
+            <option value="2">2 - Atypical angina</option>
+            <option value="3">3 - Non-anginal pain</option>
+            <option value="4" selected>4 - Asymptomatic</option>
+          </select>
+        </label>
+        <label>Resting blood pressure (mm Hg)<input type="number" name="trestbps" min="50" max="260" required value="130"></label>
+        <label>Cholesterol (mg/dl)<input type="number" name="chol" min="80" max="700" required value="250"></label>
+        <label>Fasting blood sugar &gt; 120 mg/dl
+          <select name="fbs"><option value="0">No</option><option value="1">Yes</option></select>
+        </label>
+        <label>Resting ECG
+          <select name="restecg">
+            <option value="0">0 - Normal</option>
+            <option value="1">1 - ST-T wave abnormality</option>
+            <option value="2">2 - Left ventricular hypertrophy</option>
+          </select>
+        </label>
+        <label>Max heart rate achieved<input type="number" name="thalach" min="40" max="250" required value="150"></label>
+        <label>Exercise induced angina
+          <select name="exang"><option value="0">No</option><option value="1">Yes</option></select>
+        </label>
+        <label>ST depression (oldpeak)<input type="number" name="oldpeak" min="0" max="10" step="0.1" required value="1.0"></label>
+        <label>Slope of peak exercise ST
+          <select name="slope">
+            <option value="1">1 - Upsloping</option>
+            <option value="2" selected>2 - Flat</option>
+            <option value="3">3 - Downsloping</option>
+          </select>
+        </label>
+        <label>Major vessels colored (0-3)
+          <select name="ca"><option>0</option><option>1</option><option>2</option><option>3</option></select>
+        </label>
+        <label>Thalassemia
+          <select name="thal">
+            <option value="3">3 - Normal</option>
+            <option value="6">6 - Fixed defect</option>
+            <option value="7">7 - Reversible defect</option>
+          </select>
+        </label>
+      </div>
+      <button type="submit" id="btn">Predict</button>
+    </form>
+
+    <div id="loading" class="hidden">Predicting...</div>
+    <div id="error" class="error hidden"></div>
+    <div id="result" class="result hidden">
+      <h2 id="result-text"></h2>
+      <div class="bar-row"><span>No heart disease</span><div class="bar"><div id="bar-no"></div></div><b id="pct-no"></b></div>
+      <div class="bar-row"><span>Heart disease</span><div class="bar"><div id="bar-yes"></div></div><b id="pct-yes"></b></div>
+    </div>
+
+    <p class="disclaimer">Medical disclaimer: this is an educational machine learning project. It is not a clinically validated diagnostic tool and must not be used for medical decisions. Consult a qualified doctor for any health concern.</p>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
